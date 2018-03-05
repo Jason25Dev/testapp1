@@ -36,8 +36,8 @@ module.exports = {
     create(req, res) {
         res.send('The image:create POST controller');
     },
-    like (req, res) {
-        res.send('The image:like POST controller');
+    like(req, res) {
+    res.json({ likes: 1 });
     },
     comment(req, res) {
         res.send('The image:comment POST controller');
