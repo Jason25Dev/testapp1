@@ -9,6 +9,8 @@ const path = require('path'),
       methodOverride = require('method-override'),
       errorHandler = require('errorhandler'),
       moment = require('moment');
+      //multer = require('multer');
+
 
         module.exports = (app)=>{
         app.use(morgan('dev'));
@@ -24,16 +26,16 @@ const path = require('path'),
               app.use(errorHandler());
             }
             app.engine('handlebars', exphbs.create({
-    defaultLayout: 'main',
-    layoutsDir: app.get('Views') + '/layouts',
-    partialsDir: [app.get('Views') + '/partials'],
-    helpers: {
-        timeago: (timestamp)=> {
-            return moment(timestamp).startOf('minute').fromNow();
-        }
-    }
+              defaultLayout: 'main',
+              layoutsDir: app.get('Views') + '/layouts',
+              partialsDir: [app.get('Views') + '/partials'],
+              helpers: {
+                timeago: (timestamp)=> {
+                  return moment(timestamp).startOf('minute').fromNow();
+                }
+              }
+        }).engine);
 
-}).engine);
-app.set('View engine', 'handlebars');
+        app.set('View engine', 'handlebars');
             return app;
-          };
+          }
